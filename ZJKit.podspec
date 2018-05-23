@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZJKit'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'A short description of ZJKit.'
 
 # This description is used to generate tags and improve search results.
@@ -37,15 +37,15 @@ TODO: Add long description of the pod here.
   #   'ZJKit' => ['ZJKit/Assets/*.png']
   # }
 
-  s.dependency 'SAKit'
-  s.dependency 'SAFoundation'
-  s.dependency 'SAModuleService'
-  s.dependency 'SAConfig'
-  s.dependency 'SALocalizable'
-  s.dependency 'SANetwork'
-  s.dependency 'SANetworkHUD'
-  s.dependency 'SAGlobal'
-  s.dependency 'SALogin'
+#UI布局约束
+  s.dependency 'Masonry'
+
+#与H5交互
+  s.dependency 'WebViewJavascriptBridge'
+
+#图片加载
+  s.dependency 'SDWebImage'
+
 
   s.requires_arc = true
 

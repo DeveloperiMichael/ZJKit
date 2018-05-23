@@ -2,52 +2,16 @@
 inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'ssh://git@192.168.6.115:7999/xdwios/saspecs.git'
+#source 'ssh://git@192.168.6.115:7999/xdwios/saspecs.git'
 
 target 'ZJKit_Example' do
   pod 'ZJKit', :path => '../'
 
 
-# -------------------------  变动较大的采用地址引入  -----------------------
-  pod 'SAKit', :git => 'ssh://git@192.168.6.115:7999/xdwios/sakit.git', :branch => 'dev'
 
-  pod 'SABottomMenu'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/sabottommenu.git'
-
-  pod 'SAModuleService'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/samoduleservice.git', :branch => '0331'
-
-# 以下只在demo中使用，无需依赖
-  pod 'SAHome'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/sahome.git', :branch => 'TaskOnly'
-
-  pod 'SALogin'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/salogin.git'
-
-  pod 'SATaskCenter'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/sataskcenter.git', :branch => '0331'
-
-  pod 'SAInfoCenter'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/sainfocenter.git', :branch => 'TaskOnly'
-
-  pod 'SASearch'
-  pod 'SAMine'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/samine.git'
-
-  pod 'SANetworkHUD'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/sanetworkhud.git'
-
-  pod 'SAAreaAddress'
-  #, :git => 'ssh://git@192.168.6.115:7999/xdwios/saareaaddress.git'
-# ------------------  变动较小的组件或者是其他三方库引入版本号 -----------------
-  pod 'SAScan'
-  pod 'SAHardware'
-  pod 'IQKeyboardManager', '4.0.10'
-  pod 'JPush', '3.0.6'
 
   target 'ZJKit_Tests' do
     inherit! :search_paths
-
     
   end
 end

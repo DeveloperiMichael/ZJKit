@@ -319,28 +319,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZJKit_Example/Pods-ZJKit_Example-resources.sh",
-				"${PODS_ROOT}/AMap3DMap-NO-IDFA/MAMapKit.framework/AMap.bundle",
-				"${PODS_ROOT}/AMapNavi-NO-IDFA/AMapNaviKit.framework/AMapNavi.bundle",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SABottomMenu/SABottomMenu/Resource/SABottomMenu.bundle",
-				"${PODS_ROOT}/SAConfig/SAConfig/Lib/TencentOpenApi_IOS_Bundle.bundle",
-				"${PODS_ROOT}/SAHardware/SAHardware/Classes/Resource/SAHardware.xcassets",
-				"${PODS_ROOT}/SAHome/SAHome/Assets/SAHome.xcassets",
-				"${PODS_ROOT}/SAInfoCenter/SAInfoCenter/Assets/SAInfoCenter.xcassets",
-				"${PODS_ROOT}/SAInfoCenter/SAInfoCenter/Classes/Data/SAInfoCenter.bundle",
-				"${PODS_ROOT}/SAKit/SAKit/Resource/SAKit.bundle",
-				"${PODS_ROOT}/SALocalizable/SALocalizable/Resource/SALocalizable.bundle",
-				"${PODS_ROOT}/SALogin/SALogin/Assets/SALogin.xcassets",
-				"${PODS_ROOT}/SALogin/SALogin/Assets/login_movie.mp4",
-				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
-				"${PODS_ROOT}/SAMine/SAMine/Assets/SAMine.xcassets",
-				"${PODS_ROOT}/SANetworkHUD/SANetworkHUD/Assets/SANetworkHUD.xcassets",
-				"${PODS_ROOT}/SASearch/SASearch/Assets/SASearch.xcassets",
-				"${PODS_ROOT}/SATaskCenter/SATaskCenter/Assets/SATaskCenter.xcassets",
-				"${PODS_ROOT}/SATaskCenter/SATaskCenter/SATaskCenter.bundle",
-				"${PODS_ROOT}/SATouchIDManager/SATouchIDManager/Assets/SATouchID.xcassets",
-				"${PODS_ROOT}/UMContacts/UMContacts/Assets/UMContacts.xcassets",
 				"${PODS_ROOT}/../../ZJKit/Assets/ZJKit.xcassets",
 			);
 			name = "[CP] Copy Pods Resources";
