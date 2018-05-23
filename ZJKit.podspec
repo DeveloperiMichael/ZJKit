@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'http://192.168.6.115:7990/users/michael.zhang/repos/ZJKit/browse'
+  s.homepage         = 'https://github.com/DeveloperiMichael/ZJKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'DeveloperiMichael' => 'michael.zhang@wwwarehouse.com' }
-  s.source           = { :git => 'ssh://git@192.168.6.115:7999/~michael.zhang/ZJKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/DeveloperiMichael/ZJKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
