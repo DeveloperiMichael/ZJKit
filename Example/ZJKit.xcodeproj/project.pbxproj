@@ -23,6 +23,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		AB37126D20B56B00004343F0 /* ZJHorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB37126C20B56B00004343F0 /* ZJHorListViewController.m */; };
+		AB37129F20BBAB04004343F0 /* classDataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB37129E20BBAB04004343F0 /* classDataList.plist */; };
 		BBF085928AC1EA528EA3F5B0 /* libPods-ZJKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E485CC711B5B9049D766584 /* libPods-ZJKit_Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E95E30A7404158F3FA98F7E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2E95E30A7404158F3FA98F7E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		2EC888669EB32B3443ADD182 /* Pods-ZJKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJKit_Example/Pods-ZJKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		33B3201B2C94505FBCA873B0 /* Pods-ZJKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJKit_Tests/Pods-ZJKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		33D7C44E778EC0A242A69BE9 /* libPods-ZJKit_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJKit_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,9 +65,12 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E485CC711B5B9049D766584 /* libPods-ZJKit_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJKit_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8D2D22A2401E6894A640F68D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		8D2D22A2401E6894A640F68D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9D8C66B7187C0FB318AD211F /* Pods-ZJKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJKit_Example/Pods-ZJKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		DE9F9FA49F7CD6A85230EFAC /* ZJKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ZJKit.podspec; path = ../ZJKit.podspec; sourceTree = "<group>"; };
+		AB37126B20B56B00004343F0 /* ZJHorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHorListViewController.h; sourceTree = "<group>"; };
+		AB37126C20B56B00004343F0 /* ZJHorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHorListViewController.m; sourceTree = "<group>"; };
+		AB37129E20BBAB04004343F0 /* classDataList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = classDataList.plist; sourceTree = "<group>"; };
+		DE9F9FA49F7CD6A85230EFAC /* ZJKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZJKit.podspec; path = ../ZJKit.podspec; sourceTree = "<group>"; };
 		EDFD1021BE755122A69356DF /* Pods-ZJKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJKit_Tests/Pods-ZJKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +155,7 @@
 				6003F5A6195388D20070C39A /* ZJViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				AB37126A20B56ADE004343F0 /* ZJDemoController */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for ZJKit";
@@ -194,6 +200,16 @@
 				2E95E30A7404158F3FA98F7E /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		AB37126A20B56ADE004343F0 /* ZJDemoController */ = {
+			isa = PBXGroup;
+			children = (
+				AB37126B20B56B00004343F0 /* ZJHorListViewController.h */,
+				AB37126C20B56B00004343F0 /* ZJHorListViewController.m */,
+				AB37129E20BBAB04004343F0 /* classDataList.plist */,
+			);
+			path = ZJDemoController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +266,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = DeveloperiMichael;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = XDK267KQ83;
+						ProvisioningStyle = Manual;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -283,6 +303,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				AB37129F20BBAB04004343F0 /* classDataList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB37126D20B56B00004343F0 /* ZJHorListViewController.m in Sources */,
 				6003F59E195388D20070C39A /* ZJAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* ZJViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
@@ -533,6 +555,8 @@
 			baseConfigurationReference = 9D8C66B7187C0FB318AD211F /* Pods-ZJKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = XDK267KQ83;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZJKit/ZJKit-Prefix.pch";
@@ -540,6 +564,8 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "22254f21-0bb3-45a6-a71b-84d265f30241";
+				PROVISIONING_PROFILE_SPECIFIER = "AppStoreDevelopment *";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -549,6 +575,8 @@
 			baseConfigurationReference = 2EC888669EB32B3443ADD182 /* Pods-ZJKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = XDK267KQ83;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZJKit/ZJKit-Prefix.pch";
@@ -556,6 +584,8 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "22254f21-0bb3-45a6-a71b-84d265f30241";
+				PROVISIONING_PROFILE_SPECIFIER = "AppStoreDevelopment *";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

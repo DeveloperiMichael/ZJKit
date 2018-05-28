@@ -7,11 +7,9 @@
 //
 
 #import "ZJViewController.h"
-#import <SAKit/SAKit.h>
-#import <SAModuleService/SAModuleService.h>
 
 
-@interface ZJViewController ()<UITableViewDelegate,UITableViewDataSource,SAViewControllerSceneProtocol>
+@interface ZJViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *componentArray;
@@ -20,24 +18,16 @@
 
 @implementation ZJViewController
 
-- (SANavigationBarStyle)navigationBarStyle {
-    return SANavigationBarStyleWhite;
-}
-
-- (BOOL)extendedToTop {
-    return YES;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"订购商品";
+    self.title = @"ZJKit Demo";
     
-    
-    self.componentArray = [NSArray arrayWithObjects:@"订购商品", @"采购车", @"注销", nil];
+    NSString *listPath = [[NSBundle mainBundle] pathForResource:@"classDataList" ofType:@".plist"];
+    self.componentArray = [NSArray arrayWithContentsOfFile:listPath];
     
     [self.view addSubview:self.tableView];
     
@@ -49,10 +39,18 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-20)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.backgroundColor = [UIColor clearColor];
     }
     return _tableView;
 }
+
+- (NSArray *)componentArray {
+    if (!_componentArray) {
+        _componentArray = [NSArray array];
+    }
+    return _componentArray;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.componentArray.count;
@@ -64,9 +62,10 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    NSDictionary *classDict = self.componentArray[indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.text = self.componentArray[indexPath.row];
-    cell.textLabel.textColor = [UIColor sa_colorC1];
+    cell.textLabel.text = classDict[@"titleName"];
+    cell.textLabel.textColor =  [UIColor colorWithRed:46/255.0 green:111/255.0 blue:230/255.0 alpha:1];
     return cell;
 }
 
@@ -75,26 +74,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:
-        {
-//            UIViewController<CMOrderProductProtocol> *viewController = [SAServiceManager createServiceWithProtocol:@protocol(CMOrderProductProtocol)];
-//            viewController.sa_buId = @"10001719";
-//            [self.navigationController pushViewController:viewController animated:YES];
-        }
-            
-            break;
-        case 1:
-        {
-            
-        }
-            
-            break;
-        default:
-            //注销
-            [[NSNotificationCenter defaultCenter] postNotificationName:SALoginModuleNeedLogoutNotification object:nil];
-            break;
+    NSDictionary *classDict = self.componentArray[indexPath.row];
+    
+    UIViewController *viewController = nil;
+    viewController = [[NSClassFromString(classDict[@"className"]) alloc] init];
+    if (viewController) {
+        viewController.title = classDict[@"titleName"];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
+    
 }
 
 

@@ -1,9 +1,9 @@
 {
   "name": "ZJKit",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "summary": "A short description of ZJKit.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "http://192.168.6.115:7990/users/michael.zhang/repos/ZJKit/browse",
+  "homepage": "https://github.com/DeveloperiMichael/ZJKit",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "DeveloperiMichael": "michael.zhang@wwwarehouse.com"
   },
   "source": {
-    "git": "ssh://git@192.168.6.115:7999/~michael.zhang/ZJKit.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/DeveloperiMichael/ZJKit.git",
+    "tag": "0.0.1"
   },
   "platforms": {
     "ios": "8.0"
