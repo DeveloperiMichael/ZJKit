@@ -47,6 +47,7 @@
     UIViewController *viewController = nil;
     viewController = [[NSClassFromString(classStr) alloc] init];
     if (viewController) {
+        viewController.title = _dataArray[indexPath.row];
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }

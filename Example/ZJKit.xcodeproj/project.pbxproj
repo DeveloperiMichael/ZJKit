@@ -27,6 +27,7 @@
 		AB37129F20BBAB04004343F0 /* classDataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB37129E20BBAB04004343F0 /* classDataList.plist */; };
 		ABBEBE0B20BCEB3B00B3AE7E /* ZJAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBEBE0920BCEB3B00B3AE7E /* ZJAnimationViewController.m */; };
 		ABBEBE0E20BCEF8B00B3AE7E /* CATransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBEBE0D20BCEF8B00B3AE7E /* CATransitionViewController.m */; };
+		ABBEBE9520BE77B500B3AE7E /* CABasicAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBEBE9420BE77B500B3AE7E /* CABasicAnimationViewController.m */; };
 		BBF085928AC1EA528EA3F5B0 /* libPods-ZJKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E485CC711B5B9049D766584 /* libPods-ZJKit_Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,8 @@
 		ABBEBE0A20BCEB3B00B3AE7E /* ZJAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAnimationViewController.h; sourceTree = "<group>"; };
 		ABBEBE0C20BCEF8B00B3AE7E /* CATransitionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CATransitionViewController.h; sourceTree = "<group>"; };
 		ABBEBE0D20BCEF8B00B3AE7E /* CATransitionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CATransitionViewController.m; sourceTree = "<group>"; };
+		ABBEBE9320BE77B500B3AE7E /* CABasicAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CABasicAnimationViewController.h; sourceTree = "<group>"; };
+		ABBEBE9420BE77B500B3AE7E /* CABasicAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CABasicAnimationViewController.m; sourceTree = "<group>"; };
 		DE9F9FA49F7CD6A85230EFAC /* ZJKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZJKit.podspec; path = ../ZJKit.podspec; sourceTree = "<group>"; };
 		EDFD1021BE755122A69356DF /* Pods-ZJKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJKit_Tests/Pods-ZJKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +229,8 @@
 				ABBEBE0920BCEB3B00B3AE7E /* ZJAnimationViewController.m */,
 				ABBEBE0C20BCEF8B00B3AE7E /* CATransitionViewController.h */,
 				ABBEBE0D20BCEF8B00B3AE7E /* CATransitionViewController.m */,
+				ABBEBE9320BE77B500B3AE7E /* CABasicAnimationViewController.h */,
+				ABBEBE9420BE77B500B3AE7E /* CABasicAnimationViewController.m */,
 			);
 			path = ZJAnimationViewController;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 			files = (
 				ABBEBE0B20BCEB3B00B3AE7E /* ZJAnimationViewController.m in Sources */,
 				AB37126D20B56B00004343F0 /* ZJHorListViewController.m in Sources */,
+				ABBEBE9520BE77B500B3AE7E /* CABasicAnimationViewController.m in Sources */,
 				6003F59E195388D20070C39A /* ZJAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* ZJViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

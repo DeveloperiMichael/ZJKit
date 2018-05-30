@@ -6,16 +6,11 @@
 //
 
 #import "UIView+ZJTransitionAnimation.h"
-#import <objc/runtime.h>
 
-static NSString * const kCAAnimationKey = @"com.zjouer.www.CAAnimation.key";
-static char const *kTransitionTypeArrayKey = "com.zjouer.www.transitionTypeArray.key";
-static char const *kTransitionSubtypeArrayKey = "com.zjouer.www.transitionSubtypeArray.key";
+static NSString * const kZJTransitionAnimationKey = @"com.zjouer.www.ZJTransitionAnimation";
 
 @interface UIView ()<CAAnimationDelegate>
 
-@property (nonatomic, strong) NSArray *transitionTypeArray;
-@property (nonatomic, strong) NSArray *transitionSubtypeArray;
 
 @end
 
@@ -25,7 +20,7 @@ static char const *kTransitionSubtypeArrayKey = "com.zjouer.www.transitionSubtyp
                              subType:(ZJTransitionAnimationSubtype)subtype
                             duration:(CFTimeInterval)duration {
     
-    self.transitionTypeArray = [NSArray arrayWithObjects:
+    NSArray *transitionTypeArray = [NSArray arrayWithObjects:
                                 @"fade",
                                 @"moveIn",
                                 @"push",
@@ -39,7 +34,7 @@ static char const *kTransitionSubtypeArrayKey = "com.zjouer.www.transitionSubtyp
                                 @"cameralrisHollowOpen",
                                 @"cameralrisHollowClose",nil];
     
-    self.transitionSubtypeArray = [NSArray arrayWithObjects:
+    NSArray *transitionSubtypeArray = [NSArray arrayWithObjects:
                                 @"none",
                                 @"fromLeft",
                                 @"fromRight",
@@ -47,11 +42,12 @@ static char const *kTransitionSubtypeArrayKey = "com.zjouer.www.transitionSubtyp
                                 @"fromBottom",nil];
     
     CATransition *transition = [CATransition animation];
-    transition.type = self.transitionTypeArray[(NSInteger)type];
+    transition.type = transitionTypeArray[(NSInteger)type];
     transition.delegate = self;
     transition.duration = duration;
-    transition.subtype = self.transitionSubtypeArray[(NSInteger)subtype];
-    [self.layer addAnimation:transition forKey:kCAAnimationKey];
+    transition.subtype = transitionSubtypeArray[(NSInteger)subtype];
+    NSString *key = [kZJTransitionAnimationKey stringByAppendingString:[NSString stringWithFormat:@".%@.key",transitionTypeArray[(NSInteger)type]]];
+    [self.layer addAnimation:transition forKey:key];
 }
 
 #pragma mark - CAAnimationDelegate
@@ -65,23 +61,6 @@ static char const *kTransitionSubtypeArrayKey = "com.zjouer.www.transitionSubtyp
 }
 
 
-#pragma mark - property
-
-- (void)setTransitionTypeArray:(NSArray *)transitionTypeArray {
-    objc_setAssociatedObject(self, kTransitionTypeArrayKey, transitionTypeArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSArray *)transitionTypeArray {
-    return objc_getAssociatedObject(self, kTransitionTypeArrayKey);
-}
-
-- (void)setTransitionSubtypeArray:(NSArray *)transitionSubtypeArray {
-    objc_setAssociatedObject(self, kTransitionSubtypeArrayKey, transitionSubtypeArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSArray *)transitionSubtypeArray {
-    return objc_getAssociatedObject(self, kTransitionSubtypeArrayKey);
-}
 
 
 
