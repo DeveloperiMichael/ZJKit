@@ -16,4 +16,9 @@
 
 #import "ZJHorListView.h"
 
+
+#import "UIView+Frame.h"
+#import "UIView+ZJTransitionAnimation.h"
+#import "UIView+ZJKitExtend.h"
+
 #endif /* ZJKit_h */

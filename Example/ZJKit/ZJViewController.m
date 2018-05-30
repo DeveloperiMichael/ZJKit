@@ -24,9 +24,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"ZJKit Demo";
+    self.title = @"ZJKit";
     
-    NSString *listPath = [[NSBundle mainBundle] pathForResource:@"classDataList" ofType:@".plist"];
+    NSString *listPath = [[NSBundle mainBundle] pathForResource:@"classDataList" ofType:@"plist"];
     self.componentArray = [NSArray arrayWithContentsOfFile:listPath];
     
     [self.view addSubview:self.tableView];

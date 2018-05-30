@@ -8,5 +8,11 @@
 		<key>className</key>
 		<string>ZJHorListViewController</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>Animaiton</string>
+		<key>className</key>
+		<string>ZJAnimationViewController</string>
+	</dict>
 </array>
 </plist>
