@@ -46,6 +46,11 @@ TODO: Add long description of the pod here.
 #图片加载
   s.dependency 'SDWebImage'
 
+#列表分页加载
+  s.dependency 'MJRefresh'
+
+#键盘处理
+s.dependency 'IQKeyboardManager'
 
   s.requires_arc = true
 

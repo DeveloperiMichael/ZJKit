@@ -1,11 +1,15 @@
 PODS:
+  - IQKeyboardManager (6.0.2)
   - Masonry (1.1.0)
+  - MJRefresh (3.1.15.3)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
   - WebViewJavascriptBridge (6.0.3)
   - ZJKit (0.0.1):
+    - IQKeyboardManager
     - Masonry
+    - MJRefresh
     - SDWebImage
     - WebViewJavascriptBridge
 
@@ -17,10 +21,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
+  IQKeyboardManager: c49d59e358aeeffaa0280aa305093c2b194d2607
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
-  ZJKit: d4508f2771f81156efd26e1ffff00f90d825c269
+  ZJKit: ae8ef193cb0e54e5e1b6e519a542da54985c7971
 
 PODFILE CHECKSUM: 7257df4052defd7927ade0000c848f5a3d091447
 

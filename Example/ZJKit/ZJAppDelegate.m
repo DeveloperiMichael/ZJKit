@@ -8,6 +8,7 @@
 
 #import "ZJAppDelegate.h"
 #import "ZJViewController.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -27,6 +28,11 @@
     //如果想进SAViewController调试
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ZJViewController alloc] init]];
+    
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
     
     return YES;
 }

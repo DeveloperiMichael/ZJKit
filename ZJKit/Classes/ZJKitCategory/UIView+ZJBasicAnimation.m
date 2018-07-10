@@ -7,6 +7,10 @@
 
 #import "UIView+ZJBasicAnimation.h"
 
+@interface UIView ()<CAAnimationDelegate>
+
+@end
+
 static NSString * const kZJBasicAnimationKey = @"com.zjouer.www.ZJBasicAnimation";
 
 @implementation UIView (ZJBasicAnimation)
@@ -20,12 +24,14 @@ static NSString * const kZJBasicAnimationKey = @"com.zjouer.www.ZJBasicAnimation
     animation.toValue = toValue;
     animation.removedOnCompletion = YES;
     animation.autoreverses = YES;
-    animation.fillMode = kCAFillModeForwards;
+    animation.fillMode = kCAFillModeBackwards;
     animation.repeatCount = 1;
     animation.duration = duration;
+    animation.delegate = self;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     NSString *key = [kZJBasicAnimationKey stringByAppendingString:[NSString stringWithFormat:@".%@.key",keyPath]];
     [self.layer addAnimation:animation forKey:key];
+    
 }
 
 

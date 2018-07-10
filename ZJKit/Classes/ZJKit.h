@@ -23,9 +23,14 @@
 #import "UIView+ZJTransitionAnimation.h"
 #import "UIView+ZJKitExtend.h"
 #import "UIView+ZJBasicAnimation.h"
+#import "UIView+ZJKeyFrameAnimation.h"
 
 /*************************** 基础组件封装  *******************************/
 
 #import "ZJHorListView.h"
+#import "ZJRulerView.h"
+#import "ZJMaskView.h"
+#import "ZJBasePopupViewController.h"
+#import "ZJAlert.h"
 
 #endif /* ZJKit_h */

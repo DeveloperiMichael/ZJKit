@@ -29,8 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor orangeColor];
     [self setupSubviewsContraints];
     
     
@@ -58,7 +58,9 @@
     _animationType = _animationArray[indexPath.row];
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.01;
+}
 
 #pragma mark-
 #pragma mark- Event response
@@ -116,16 +118,9 @@ shadowRadius
                            @"transform.scale",
                            @"transform.translation.x",
                            @"transform.translation.y",
-                           @"transform.translation.z",
-                           @"bounds.origin.x",
-                           @"bounds.origin.y",
-                           @"bounds.origin",
-                           @"bounds.size.width",
-                           @"bounds.size.height",
-                           @"bounds.size",
-                           @"bounds.scale.x",
-                           @"bounds.scale.y",
-                           @"bounds.scale",
+                           @"position.x",
+                           @"position.y",
+                           @"position",
                            @"opacity",
                            @"backgroundColor",
                            @"cornerRadius",
@@ -134,10 +129,7 @@ shadowRadius
                            @"shadowColor",
                            @"shadowOffset",
                            @"shadowOpacity",
-                           @"shadowRadius",
-                           @"position.x",
-                           @"position.y",
-                           @"position",nil];
+                           @"shadowRadius",nil];
     }
     return _animationArray;
 }
@@ -158,32 +150,15 @@ shadowRadius
     }else if ([_animationType hasPrefix:@"transform.translation"]) {
         //transform.translation  终点设定
         toValue = [NSNumber numberWithFloat:-200];
-    }else if ([_animationType hasPrefix:@"bounds.origin"]) {
-        //bounds.origin
-        if ([_animationType isEqualToString:@"bounds.origin"]) {
-            toValue = [NSValue valueWithCGPoint:CGPointMake(100, 50)];
-        }else{
-            toValue = [NSNumber numberWithFloat:-100]; // 终了点
-        }
-    }else if ([_animationType hasPrefix:@"bounds.size"]) {
-        //bounds.size
-        if ([_animationType isEqualToString:@"bounds.size"]) {
-            toValue = [NSValue valueWithCGSize:CGSizeMake(100, 50)];
-        }else{
-            toValue = [NSNumber numberWithFloat:200]; // 终了点
-        }
-    }else if ([_animationType hasPrefix:@"bounds.scale"]) {
-        //bounds.scale
-        toValue = [NSNumber numberWithFloat:1.5]; // 结束时的倍率
     }else if ([_animationType hasPrefix:@"opacity"]) {
         //opacity
         toValue = [NSNumber numberWithFloat:0.2];
     }else if ([_animationType hasPrefix:@"backgroundColor"]) {
         //backgroundColor
-        //fromValue = [UIColor redColor];
         toValue = (__bridge id _Nullable)([UIColor brownColor].CGColor);
     }else if ([_animationType hasPrefix:@"cornerRadius"]) {
         //cornerRadius
+        //fromValue = [NSNumber numberWithFloat:0];
         toValue = [NSNumber numberWithFloat:60];
     }else if ([_animationType hasPrefix:@"contents"]) {
         //contents
@@ -198,16 +173,26 @@ shadowRadius
         }else{
             toValue = [NSNumber numberWithFloat:100];
         }
+    }else if ([_animationType hasPrefix:@"shadowColor"]) {
+        //shadowColor
+        toValue = (__bridge id _Nullable)([UIColor redColor].CGColor);
+    }else if ([_animationType hasPrefix:@"shadowOffset"]) {
+        //shadowOffset
+        toValue = [NSNumber numberWithFloat:16];
+    }else if ([_animationType hasPrefix:@"shadowOpacity"]) {
+        //shadowOpacity
+        toValue = [NSNumber numberWithFloat:1.0];
+    }else if ([_animationType hasPrefix:@"shadowRadius"]) {
+        //shadowRadius
+        toValue = [NSNumber numberWithFloat:15];
     }
     
-    [self.animationView startBasicAnimationkeyPath:_animationType fromValue:fromValue toValue:toValue duration:1.0];
     
-    
-//    if ([_animationType hasPrefix:@"contents"]) {
-//        [self.imgView.layer addAnimation:ani forKey:@"PostionAni"];
-//    }else{
-//        [self.animationView.layer addAnimation:ani forKey:@"PostionAni"];
-//    }
+    if ([_animationType hasPrefix:@"contents"]||[_animationType hasPrefix:@"cornerRadius"]) {
+        [self.imgView startBasicAnimationkeyPath:_animationType fromValue:fromValue toValue:toValue duration:1.0];
+    }else{
+        [self.animationView startBasicAnimationkeyPath:_animationType fromValue:fromValue toValue:toValue duration:1.0];
+    }
     
     
 
@@ -220,7 +205,12 @@ shadowRadius
 - (UIView *)animationView {
     if (!_animationView) {
         _animationView = [[UIView alloc] init];
-        _animationView.backgroundColor = [UIColor redColor];
+        _animationView.backgroundColor = [UIColor clearColor];
+        _animationView.layer.shadowOffset = CGSizeZero;
+        _animationView.layer.shadowColor = [UIColor blackColor].CGColor;
+        _animationView.layer.shadowOpacity = 1.0;
+        _animationView.layer.shadowRadius = 10;
+        _animationView.layer.borderColor = [UIColor redColor].CGColor;
     }
     return _animationView;
 }
@@ -259,6 +249,8 @@ shadowRadius
 - (UIImageView *)imgView {
     if (!_imgView) {
         _imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"from"]];
+        _imgView.layer.cornerRadius = 10;
+        _imgView.layer.masksToBounds = YES;
     }
     return _imgView;
 }
@@ -287,7 +279,7 @@ shadowRadius
     [_animationView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
         make.top.mas_equalTo(self.tableView.mas_bottom).mas_offset(20);
-        make.width.height.mas_equalTo(240);
+        make.width.height.mas_equalTo(200);
     }];
     
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -29,6 +29,12 @@
     ],
     "SDWebImage": [
 
+    ],
+    "MJRefresh": [
+
+    ],
+    "IQKeyboardManager": [
+
     ]
   },
   "requires_arc": true

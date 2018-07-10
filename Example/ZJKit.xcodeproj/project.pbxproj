@@ -25,9 +25,18 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		AB37126D20B56B00004343F0 /* ZJHorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB37126C20B56B00004343F0 /* ZJHorListViewController.m */; };
 		AB37129F20BBAB04004343F0 /* classDataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB37129E20BBAB04004343F0 /* classDataList.plist */; };
+		AB4E6C8320BE9F9400A13CF9 /* CAKeyFrameAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E6C8220BE9F9300A13CF9 /* CAKeyFrameAnimationViewController.m */; };
+		ABB9AA8E20C8DE7A00832C84 /* ZJRulerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9AA8D20C8DE7A00832C84 /* ZJRulerViewController.m */; };
+		ABB9AA9620C931F800832C84 /* ZJMaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9AA9520C931F800832C84 /* ZJMaskViewController.m */; };
+		ABB9AA9A20CF5B4700832C84 /* ZJFromViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9AA9920CF5B4700832C84 /* ZJFromViewController.m */; };
+		ABB9AA9D20CF5B5700832C84 /* ZJToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9AA9C20CF5B5700832C84 /* ZJToViewController.m */; };
+		ABB9AAA020CF5C0A00832C84 /* ZJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB9AA9F20CF5C0A00832C84 /* ZJMainViewController.m */; };
 		ABBEBE0B20BCEB3B00B3AE7E /* ZJAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBEBE0920BCEB3B00B3AE7E /* ZJAnimationViewController.m */; };
 		ABBEBE0E20BCEF8B00B3AE7E /* CATransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBEBE0D20BCEF8B00B3AE7E /* CATransitionViewController.m */; };
 		ABBEBE9520BE77B500B3AE7E /* CABasicAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBEBE9420BE77B500B3AE7E /* CABasicAnimationViewController.m */; };
+		ABE5FBE920F4C8CA0071EAE5 /* ZJDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE5FBE820F4C8CA0071EAE5 /* ZJDatePickerViewController.m */; };
+		ABFCDB3020EB89720040BEBD /* ZJGCDTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFCDB2E20EB89720040BEBD /* ZJGCDTestViewController.m */; };
+		ABFCDB3120EB89720040BEBD /* ZJWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFCDB2F20EB89720040BEBD /* ZJWebImage.m */; };
 		BBF085928AC1EA528EA3F5B0 /* libPods-ZJKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E485CC711B5B9049D766584 /* libPods-ZJKit_Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -73,12 +82,30 @@
 		AB37126B20B56B00004343F0 /* ZJHorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHorListViewController.h; sourceTree = "<group>"; };
 		AB37126C20B56B00004343F0 /* ZJHorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHorListViewController.m; sourceTree = "<group>"; };
 		AB37129E20BBAB04004343F0 /* classDataList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = classDataList.plist; sourceTree = "<group>"; };
+		AB4E6C8120BE9F9300A13CF9 /* CAKeyFrameAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAKeyFrameAnimationViewController.h; sourceTree = "<group>"; };
+		AB4E6C8220BE9F9300A13CF9 /* CAKeyFrameAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAKeyFrameAnimationViewController.m; sourceTree = "<group>"; };
+		ABB9AA8C20C8DE7A00832C84 /* ZJRulerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJRulerViewController.h; sourceTree = "<group>"; };
+		ABB9AA8D20C8DE7A00832C84 /* ZJRulerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJRulerViewController.m; sourceTree = "<group>"; };
+		ABB9AA9420C931F800832C84 /* ZJMaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMaskViewController.h; sourceTree = "<group>"; };
+		ABB9AA9520C931F800832C84 /* ZJMaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMaskViewController.m; sourceTree = "<group>"; };
+		ABB9AA9820CF5B4700832C84 /* ZJFromViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJFromViewController.h; sourceTree = "<group>"; };
+		ABB9AA9920CF5B4700832C84 /* ZJFromViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJFromViewController.m; sourceTree = "<group>"; };
+		ABB9AA9B20CF5B5700832C84 /* ZJToViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJToViewController.h; sourceTree = "<group>"; };
+		ABB9AA9C20CF5B5700832C84 /* ZJToViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJToViewController.m; sourceTree = "<group>"; };
+		ABB9AA9E20CF5C0A00832C84 /* ZJMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJMainViewController.h; sourceTree = "<group>"; };
+		ABB9AA9F20CF5C0A00832C84 /* ZJMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJMainViewController.m; sourceTree = "<group>"; };
 		ABBEBE0920BCEB3B00B3AE7E /* ZJAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAnimationViewController.m; sourceTree = "<group>"; };
 		ABBEBE0A20BCEB3B00B3AE7E /* ZJAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAnimationViewController.h; sourceTree = "<group>"; };
 		ABBEBE0C20BCEF8B00B3AE7E /* CATransitionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CATransitionViewController.h; sourceTree = "<group>"; };
 		ABBEBE0D20BCEF8B00B3AE7E /* CATransitionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CATransitionViewController.m; sourceTree = "<group>"; };
 		ABBEBE9320BE77B500B3AE7E /* CABasicAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CABasicAnimationViewController.h; sourceTree = "<group>"; };
 		ABBEBE9420BE77B500B3AE7E /* CABasicAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CABasicAnimationViewController.m; sourceTree = "<group>"; };
+		ABE5FBE720F4C8CA0071EAE5 /* ZJDatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJDatePickerViewController.h; sourceTree = "<group>"; };
+		ABE5FBE820F4C8CA0071EAE5 /* ZJDatePickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJDatePickerViewController.m; sourceTree = "<group>"; };
+		ABFCDB2C20EB89720040BEBD /* ZJGCDTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJGCDTestViewController.h; sourceTree = "<group>"; };
+		ABFCDB2D20EB89720040BEBD /* ZJWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJWebImage.h; sourceTree = "<group>"; };
+		ABFCDB2E20EB89720040BEBD /* ZJGCDTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJGCDTestViewController.m; sourceTree = "<group>"; };
+		ABFCDB2F20EB89720040BEBD /* ZJWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJWebImage.m; sourceTree = "<group>"; };
 		DE9F9FA49F7CD6A85230EFAC /* ZJKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZJKit.podspec; path = ../ZJKit.podspec; sourceTree = "<group>"; };
 		EDFD1021BE755122A69356DF /* Pods-ZJKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJKit_Tests/Pods-ZJKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +201,7 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AB37129E20BBAB04004343F0 /* classDataList.plist */,
 				6003F595195388D20070C39A /* ZJKit-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
@@ -216,11 +244,31 @@
 			children = (
 				AB37126B20B56B00004343F0 /* ZJHorListViewController.h */,
 				AB37126C20B56B00004343F0 /* ZJHorListViewController.m */,
+				ABB9AA9420C931F800832C84 /* ZJMaskViewController.h */,
+				ABB9AA9520C931F800832C84 /* ZJMaskViewController.m */,
+				ABB9AA8C20C8DE7A00832C84 /* ZJRulerViewController.h */,
+				ABB9AA8D20C8DE7A00832C84 /* ZJRulerViewController.m */,
+				ABB9AA9720CA5A5900832C84 /* ZJControllerAnimation */,
 				ABBEBE0820BCEB3B00B3AE7E /* ZJAnimationViewController */,
-				AB37129E20BBAB04004343F0 /* classDataList.plist */,
+				ABFCDB2B20EB89720040BEBD /* ZJGCDTest */,
+				ABE5FBE620F4C8AE0071EAE5 /* ZJDatePickerDemo */,
 			);
 			path = ZJDemoController;
 			sourceTree = "<group>";
+		};
+		ABB9AA9720CA5A5900832C84 /* ZJControllerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				ABB9AA9820CF5B4700832C84 /* ZJFromViewController.h */,
+				ABB9AA9920CF5B4700832C84 /* ZJFromViewController.m */,
+				ABB9AA9B20CF5B5700832C84 /* ZJToViewController.h */,
+				ABB9AA9C20CF5B5700832C84 /* ZJToViewController.m */,
+				ABB9AA9E20CF5C0A00832C84 /* ZJMainViewController.h */,
+				ABB9AA9F20CF5C0A00832C84 /* ZJMainViewController.m */,
+			);
+			name = ZJControllerAnimation;
+			path = ZJKit/ZJDemoController/ZJControllerAnimation;
+			sourceTree = SOURCE_ROOT;
 		};
 		ABBEBE0820BCEB3B00B3AE7E /* ZJAnimationViewController */ = {
 			isa = PBXGroup;
@@ -231,8 +279,30 @@
 				ABBEBE0D20BCEF8B00B3AE7E /* CATransitionViewController.m */,
 				ABBEBE9320BE77B500B3AE7E /* CABasicAnimationViewController.h */,
 				ABBEBE9420BE77B500B3AE7E /* CABasicAnimationViewController.m */,
+				AB4E6C8120BE9F9300A13CF9 /* CAKeyFrameAnimationViewController.h */,
+				AB4E6C8220BE9F9300A13CF9 /* CAKeyFrameAnimationViewController.m */,
 			);
 			path = ZJAnimationViewController;
+			sourceTree = "<group>";
+		};
+		ABE5FBE620F4C8AE0071EAE5 /* ZJDatePickerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				ABE5FBE720F4C8CA0071EAE5 /* ZJDatePickerViewController.h */,
+				ABE5FBE820F4C8CA0071EAE5 /* ZJDatePickerViewController.m */,
+			);
+			path = ZJDatePickerDemo;
+			sourceTree = "<group>";
+		};
+		ABFCDB2B20EB89720040BEBD /* ZJGCDTest */ = {
+			isa = PBXGroup;
+			children = (
+				ABFCDB2C20EB89720040BEBD /* ZJGCDTestViewController.h */,
+				ABFCDB2E20EB89720040BEBD /* ZJGCDTestViewController.m */,
+				ABFCDB2D20EB89720040BEBD /* ZJWebImage.h */,
+				ABFCDB2F20EB89720040BEBD /* ZJWebImage.m */,
+			);
+			path = ZJGCDTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +433,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZJKit_Example/Pods-ZJKit_Example-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/../../ZJKit/Assets/ZJKit.xcassets",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -448,12 +520,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABBEBE0B20BCEB3B00B3AE7E /* ZJAnimationViewController.m in Sources */,
+				ABB9AA9D20CF5B5700832C84 /* ZJToViewController.m in Sources */,
 				AB37126D20B56B00004343F0 /* ZJHorListViewController.m in Sources */,
+				ABB9AA9A20CF5B4700832C84 /* ZJFromViewController.m in Sources */,
 				ABBEBE9520BE77B500B3AE7E /* CABasicAnimationViewController.m in Sources */,
+				ABFCDB3020EB89720040BEBD /* ZJGCDTestViewController.m in Sources */,
+				ABE5FBE920F4C8CA0071EAE5 /* ZJDatePickerViewController.m in Sources */,
 				6003F59E195388D20070C39A /* ZJAppDelegate.m in Sources */,
+				AB4E6C8320BE9F9400A13CF9 /* CAKeyFrameAnimationViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* ZJViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				ABBEBE0E20BCEF8B00B3AE7E /* CATransitionViewController.m in Sources */,
+				ABB9AA9620C931F800832C84 /* ZJMaskViewController.m in Sources */,
+				ABB9AA8E20C8DE7A00832C84 /* ZJRulerViewController.m in Sources */,
+				ABFCDB3120EB89720040BEBD /* ZJWebImage.m in Sources */,
+				ABB9AAA020CF5C0A00832C84 /* ZJMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +668,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZJKit/ZJKit-Prefix.pch";
 				INFOPLIST_FILE = "ZJKit/ZJKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -607,6 +689,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZJKit/ZJKit-Prefix.pch";
 				INFOPLIST_FILE = "ZJKit/ZJKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
