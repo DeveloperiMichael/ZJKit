@@ -14,38 +14,38 @@
 @property(nonatomic, weak) id<ZJRowPickerViewDataSource> dataSource;
 @property(nonatomic, weak) id<ZJRowPickerViewDelegate> delegate;
 
+- (void)reloadData;
+
+- (void)setSelectRowAtIndex:(NSInteger)index;
+
 @end
 
-
+#pragma mark -------------
+#pragma mark --------------------------ZJRowPickerViewDataSource
 
 @protocol ZJRowPickerViewDataSource <NSObject>
 @required
 
+- (NSInteger)zj_numberOfRowsInRowPickerView:(ZJRowPickerView *)rowPickerView;
 
-- (NSInteger)zj_rowPickerView:(ZJRowPickerView *)rowPickerView numberOfRowsInSection:(NSInteger)section;
-
-- (UITableViewCell *)zj_rowPickerView:(ZJRowPickerView *)rowPickerView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+//odd number required -> 2n+1, if even number  (+1)  >=3
+ -(NSInteger)zj_numberOfDisplayRowsInRowPickerView:(ZJRowPickerView *)rowPickerView;
 
 @end
 
-
-
+#pragma mark -------------
+#pragma mark --------------------------ZJRowPickerViewDelegate
 
 @protocol ZJRowPickerViewDelegate <NSObject>
 @optional
 
-// height for row/header/footer
-- (CGFloat)zj_rowPickerView:(ZJRowPickerView *)rowPickerView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (CGFloat)zj_rowPickerView:(ZJRowPickerView *)rowPickerView heightForHeaderInSection:(NSInteger)section;
-- (CGFloat)zj_rowPickerView:(ZJRowPickerView *)rowPickerView heightForFooterInSection:(NSInteger)section;
+- (NSString *)zj_rowPickerView:(ZJRowPickerView *)rowPickerView contentForRowAtIndex:(NSInteger)index;
 
-// customView for header/footer
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;   // custom view for header. will be adjusted to default or specified header height
-- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;   // custom view for footer. will be adjusted to default or specified footer height
-
+// height for row
+- (CGFloat)zj_heightForRowInRowPickerView:(ZJRowPickerView *)rowPickerView;
 
 // response for selected row
-- (void)zj_rowPickerView:(UITableView *)rowPickerView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)zj_rowPickerView:(UITableView *)rowPickerView didSelectRowAtIndex:(NSInteger)index;
 
 @end
 

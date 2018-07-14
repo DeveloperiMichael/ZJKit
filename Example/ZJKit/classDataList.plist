@@ -4,6 +4,12 @@
 <array>
 	<dict>
 		<key>titleName</key>
+		<string>选择器</string>
+		<key>className</key>
+		<string>ZJDatePickerController</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
 		<string>GCD 使用及测试</string>
 		<key>className</key>
 		<string>ZJGCDTestViewController</string>

@@ -1,8 +1,8 @@
 //
-//  ZJDatePicker.h
+//  ZJDatePickerController.h
 //  ZJKit
 //
-//  Created by 张炯 on 2018/7/10.
+//  Created by 张炯 on 2018/7/12.
 //
 
 #import <UIKit/UIKit.h>
@@ -13,6 +13,9 @@ typedef NS_ENUM(NSInteger, ZJDatePickerMode) {
     ZJDatePickerModeDateAndTime,    // Displays date, hour, minute, 年|月|日|时|分
 };
 
-@interface ZJDatePicker : UIControl
+@interface ZJDatePickerController : UIViewController
+
+- (instancetype)initWithPickerMode:(ZJDatePickerMode)mode;
+
 
 @end

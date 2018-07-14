@@ -19,8 +19,8 @@
 #pragma mark-
 #pragma mark- View Life Cycle
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier ];
     if (self) {
         [self setupSubviewsContraints];
     }
@@ -35,6 +35,7 @@
         _label = [[UILabel alloc] init];
         _label.textColor = [ZJColor zj_colorC8];
         _label.font = [ZJFont zj_font42px:ZJFontTypeRegular];
+        _label.textAlignment = NSTextAlignmentCenter;
     }
     return _label;
 }
@@ -47,7 +48,7 @@
 
 - (void)setContent:(NSString *)content {
     _content = content;
-    if (_content.length>0) _label.text = _content;
+    if (_content) _label.text = _content;
 }
 
 #pragma mark-

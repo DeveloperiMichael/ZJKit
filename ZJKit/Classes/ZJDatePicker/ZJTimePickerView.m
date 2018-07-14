@@ -1,13 +1,13 @@
 //
-//  ZJDatePicker.m
+//  ZJTimePickerView.m
 //  ZJKit
 //
-//  Created by 张炯 on 2018/7/10.
+//  Created by 张炯 on 2018/7/12.
 //
 
-#import "ZJDatePicker.h"
+#import "ZJTimePickerView.h"
 
-@implementation ZJDatePicker
+@implementation ZJTimePickerView
 
 /*
 // Only override drawRect: if you perform custom drawing.
