@@ -9,9 +9,10 @@
 
 
 /**
- 
- warning： all dates use GMT.
- 
+ *
+ *
+ *  warning： all dates base on GMT.
+ *
  */
 
 @protocol ZJDateAndTimePickerViewDelegate;
@@ -24,17 +25,28 @@
 
 @property (nonatomic, copy) NSString *title;
 
-// could select earliest(default 20 years before current date)/latest(default 20 years after current date) date
-@property (nonatomic, strong) NSDate *minDate;
-@property (nonatomic, strong) NSDate *maxDate;
-// have selected date.  set/get
-@property (nonatomic, strong) NSDate *selectDate;
-
 // init methods.  picker title.  earliest/latest/select date.
-- (instancetype)initWithTitle:(NSString *)title;
+- (instancetype)initWithTitle:(NSString *)title NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithMinimumDate:(NSDate *)minDate
                         maximumDate:(NSDate *)maxDate
-                         selectDate:(NSDate *)selectDate;
+                         selectDate:(NSDate *)selectDate NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+
+
+/**
+ can select earliest date(default 20 years before current date)/latest date(default 20 years after current date)
+
+ @param minDate earliest date
+ @param maxDate latest date
+ @param selectDate default date
+ */
+- (void)setDatePickerMinDate:(NSDate *)minDate
+                     maxDate:(NSDate *)maxDate
+                  selectDate:(NSDate *)selectDate;
 
 // show && hide
 - (void)show:(BOOL)animated completion:(void(^)(void))completion;

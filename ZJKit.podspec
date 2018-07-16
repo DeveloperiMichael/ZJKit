@@ -52,6 +52,8 @@ TODO: Add long description of the pod here.
 #键盘处理
 s.dependency 'IQKeyboardManager'
 
+s.dependency 'SSToolkit'
+
   s.requires_arc = true
 
 end

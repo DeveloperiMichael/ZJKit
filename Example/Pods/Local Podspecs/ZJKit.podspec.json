@@ -35,6 +35,9 @@
     ],
     "IQKeyboardManager": [
 
+    ],
+    "SSToolkit": [
+
     ]
   },
   "requires_arc": true

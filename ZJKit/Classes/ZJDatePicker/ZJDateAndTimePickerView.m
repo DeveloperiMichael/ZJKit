@@ -9,10 +9,17 @@
 #import "ZJPickerView.h"
 #import <Masonry/Masonry.h>
 #import <ZJKit/ZJKit.h>
+#import "ZJCalenderHandle.h"
 
 static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 
 @interface ZJDateAndTimePickerView ()<ZJPickerViewDataSource,ZJPickerViewDelegate,UIGestureRecognizerDelegate>
+
+{
+    NSDate *_defaultMinDate;
+    NSDate *_defaultSelectDate;
+    NSDate *_defaultMaxDate;
+}
 
 @property (nonatomic, strong) ZJPickerView *pickerView;
 @property (nonatomic, strong) NSMutableArray *componentArray;
@@ -21,6 +28,12 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 @property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UILabel *titlelabel;
 @property (nonatomic, strong) UIButton *sureButton;
+
+@property (nonatomic, strong) NSDate *minDate;
+@property (nonatomic, strong) NSDate *maxDate;
+@property (nonatomic, strong) NSDate *selectDate;
+
+
 
 @end
 
@@ -33,10 +46,10 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.title = title;
-        self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
-        self.minDate = [NSDate dateWithTimeIntervalSinceNow:20];
-        self.alpha = 0.0;
+        [self setupData];
+        [self checkDatesLegality];
         [self setupSubviewsContraints];
+         [self setupCalender];
     }
     return self;
 }
@@ -46,27 +59,13 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.title = nil;
-        self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
-        self.alpha = 0.0;
-        self.minDate = minDate;
-        self.maxDate = maxDate;
-        self.selectDate = selectDate;
+        [self setupData];
+        [self setDatePickerMinDate:minDate maxDate:maxDate selectDate:selectDate];
+        [self checkDatesLegality];
         [self setupSubviewsContraints];
+        [self setupCalender];
     }
     return self;
-}
-
-
-- (instancetype)init {
-    return [self initWithTitle:nil];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    return [self initWithTitle:nil];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    return [self initWithTitle:nil];
 }
 
 - (void)layoutSubviews {
@@ -128,8 +127,25 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 #pragma mark-
 #pragma mark- Private Methods
 
-- (void)resetDate {
+- (void)setupData {
+    self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
+    self.alpha = 0.0;
     
+    _minDate = _defaultMinDate = [ZJCalenderHandle dateOffset:-20 calendarUnit:NSCalendarUnitYear fromDate:[NSDate date]];
+    _maxDate = _defaultMaxDate = [ZJCalenderHandle dateOffset:20 calendarUnit:NSCalendarUnitYear fromDate:[NSDate date]];
+    _selectDate = _defaultSelectDate = [NSDate date];
+}
+
+- (void)checkDatesLegality {
+    BOOL legality;
+    NSDate *laterDate = [self.selectDate laterDate:self.minDate];
+    NSDate *ealierDate = [self.selectDate earlierDate:self.maxDate];
+    legality = [laterDate isEqualToDate:ealierDate];
+    NSAssert(legality, @"<ZJDateAndTimePickerView>:please check setting dates");
+}
+
+- (void)setupCalender {
+    //nscal
 }
 
 #pragma mark-
@@ -161,6 +177,14 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     }
     
 }
+
+- (void)setDatePickerMinDate:(NSDate *)minDate maxDate:(NSDate *)maxDate selectDate:(NSDate *)selectDate {
+    self.minDate = minDate?:_defaultMinDate;
+    self.maxDate = maxDate?:_defaultMaxDate;
+    self.selectDate = selectDate?:_defaultSelectDate;
+    [self checkDatesLegality];
+}
+
 
 #pragma mark-
 #pragma mark- Getters && Setters
@@ -220,22 +244,6 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
         _titlelabel.text = _title;
     }
 }
-
-- (void)setMinDate:(NSDate *)minDate {
-    _minDate = minDate;
-    [self resetDate];
-}
-
-- (void)setMaxDate:(NSDate *)maxDate {
-    _maxDate = maxDate;
-    [self resetDate];
-}
-
-- (void)setSelectDate:(NSDate *)selectDate {
-    _selectDate = selectDate;
-    [self resetDate];
-}
-
 
 #pragma mark-
 #pragma mark- SetupConstraints

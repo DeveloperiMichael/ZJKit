@@ -16,8 +16,6 @@
 @property(nullable,nonatomic,weak) id<ZJPickerViewDataSource> dataSource;
 @property(nullable,nonatomic,weak) id<ZJPickerViewDelegate>   delegate;
 
-//@property (nonatomic, assign, readonly) CGFloat widthOfComponent;
-
 // Reloading whole view or single component
 - (void)reloadAllComponents;
 - (void)reloadComponent:(NSInteger)component;
