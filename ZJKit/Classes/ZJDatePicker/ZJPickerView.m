@@ -105,8 +105,12 @@ static NSInteger kZJRowPickerViewBaseTag = 500;
 }
 
 - (void)reloadComponent:(NSInteger)component {
+    [self reloadComponent:component withSelectRowAtIndex:0];
+}
+
+- (void)reloadComponent:(NSInteger)component withSelectRowAtIndex:(NSInteger)index{
     ZJRowPickerView *rowPickerView = [self viewWithTag:kZJRowPickerViewBaseTag+component];
-    [rowPickerView reloadData];
+    [rowPickerView reloadDataWithSelectRowAtIndex:index];
 }
 
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated {

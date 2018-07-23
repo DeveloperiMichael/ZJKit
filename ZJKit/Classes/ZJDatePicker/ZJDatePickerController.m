@@ -9,7 +9,7 @@
 #import <Masonry/Masonry.h>
 #import "ZJDateAndTimePickerView.h"
 
-@interface ZJDatePickerController ()
+@interface ZJDatePickerController ()<ZJDateAndTimePickerViewDelegate>
 
 @property (nonatomic, assign) ZJDatePickerMode pickerMode;
 @property (nonatomic, strong) ZJDateAndTimePickerView *dateAndTimePickerView;
@@ -61,15 +61,28 @@
 - (void)buttonAction:(UIButton *)button {
     [self.dateAndTimePickerView show:YES completion:nil];
     
+    NSCalendar *calender = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    NSDate *curDate = [NSDate date];
+    NSDate *endDate = [calender dateByAddingUnit:NSCalendarUnitYear value:20 toDate:curDate options:NSCalendarWrapComponents];
     
 
 }
+
+
 
 
 #pragma mark-
 #pragma mark- Private Methods
 
 
+
+#pragma mark-
+#pragma mark- ZJDateAndTimePickerViewDelegate
+
+- (void)zj_dateAndTimePickerView:(ZJDateAndTimePickerView *)dateAndTimePickerView didSelectDate:(NSDate *)selectDate {
+    NSLog(@"========selectDate:%@=======",selectDate);
+}
 
 
 #pragma mark-
@@ -78,6 +91,7 @@
 - (ZJDateAndTimePickerView *)dateAndTimePickerView {
     if (!_dateAndTimePickerView) {
         _dateAndTimePickerView = [[ZJDateAndTimePickerView alloc] initWithTitle:@"请选择日期"];
+        _dateAndTimePickerView.delegate = self;
     }
     return _dateAndTimePickerView;
 }

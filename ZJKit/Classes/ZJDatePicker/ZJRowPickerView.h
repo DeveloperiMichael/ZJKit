@@ -18,6 +18,8 @@
 
 - (void)setSelectRowAtIndex:(NSInteger)index;
 
+
+- (void)reloadDataWithSelectRowAtIndex:(NSInteger)index;
 @end
 
 #pragma mark -------------

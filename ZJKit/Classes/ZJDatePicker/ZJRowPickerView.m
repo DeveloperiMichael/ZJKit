@@ -184,16 +184,17 @@ UIScrollViewDelegate>
 
 - (void)reloadData {
     [self setupData];
-    [self.bottomTableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self);
-        make.center.mas_equalTo(self);
-        make.height.mas_equalTo(_displayRowNumber*_rowHeight);
-    }];
-    [self.topTableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.bottomTableView);
-        make.width.mas_equalTo(self.bottomTableView);
-        make.height.mas_equalTo(_rowHeight);
-    }];
+#warning 这里注意布局问题
+//    [self.bottomTableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.mas_equalTo(self);
+//        make.center.mas_equalTo(self);
+//        make.height.mas_equalTo(_displayRowNumber*_rowHeight);
+//    }];
+//    [self.topTableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(self.bottomTableView);
+//        make.width.mas_equalTo(self.bottomTableView);
+//        make.height.mas_equalTo(_rowHeight);
+//    }];
     [_bottomTableView reloadData];
     [_topTableView reloadData];
     [self setSelectRowAtIndex:0];
@@ -203,7 +204,12 @@ UIScrollViewDelegate>
     if (0<=index&&index<_numberOfRows) {
         self.selectedIndex = index;
     } else {
-        self.selectedIndex = 0;
+        
+        if (index<0) {
+            self.selectedIndex = 0;
+        } else if (index>=_numberOfRows) {
+            self.selectedIndex = _numberOfRows-1;
+        }
         NSLog(@"warning: please check setSelectRowAtIndex");
     }
     
@@ -212,6 +218,14 @@ UIScrollViewDelegate>
     if ([self.delegate respondsToSelector:@selector(zj_rowPickerView:didSelectRowAtIndex:)]) {
         [self.delegate zj_rowPickerView:self didSelectRowAtIndex:self.selectedIndex];
     }
+}
+
+
+- (void)reloadDataWithSelectRowAtIndex:(NSInteger)index {
+    [self setupData];
+    [_bottomTableView reloadData];
+    [_topTableView reloadData];
+    [self setSelectRowAtIndex:index];
 }
 
 #pragma mark-

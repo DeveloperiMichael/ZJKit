@@ -19,6 +19,7 @@
 // Reloading whole view or single component
 - (void)reloadAllComponents;
 - (void)reloadComponent:(NSInteger)component;
+- (void)reloadComponent:(NSInteger)component withSelectRowAtIndex:(NSInteger)index;
 
 // selection. in this case, it means showing the appropriate row in the middle
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated;
