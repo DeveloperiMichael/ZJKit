@@ -8,12 +8,15 @@
 #import "ZJDatePickerController.h"
 #import <Masonry/Masonry.h>
 #import "ZJDateAndTimePickerView.h"
+#import "ZJDatePickerView.h"
+#import "ZJBetweenDatePickerController.h"
 
-@interface ZJDatePickerController ()<ZJDateAndTimePickerViewDelegate>
+
+@interface ZJDatePickerController ()<ZJDateAndTimePickerViewDelegate,ZJDatePickerViewDelegate>
 
 @property (nonatomic, assign) ZJDatePickerMode pickerMode;
 @property (nonatomic, strong) ZJDateAndTimePickerView *dateAndTimePickerView;
-
+@property (nonatomic, strong) ZJDatePickerView *datePickerView;
 @end
 
 @implementation ZJDatePickerController
@@ -59,14 +62,9 @@
 #pragma mark- Event response
 
 - (void)buttonAction:(UIButton *)button {
-    [self.dateAndTimePickerView show:YES completion:nil];
-    
-    NSCalendar *calender = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    
-    NSDate *curDate = [NSDate date];
-    NSDate *endDate = [calender dateByAddingUnit:NSCalendarUnitYear value:20 toDate:curDate options:NSCalendarWrapComponents];
-    
-
+    //[self.datePickerView show:YES completion:nil];
+    ZJBetweenDatePickerController *vc = [[ZJBetweenDatePickerController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -84,25 +82,39 @@
     NSLog(@"========selectDate:%@=======",selectDate);
 }
 
+- (void)zj_datePickerView:(ZJDatePickerView *)datePickerView didSelectDate:(NSDate *)selectDate {
+    NSLog(@"========selectDate:%@=======",selectDate);
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSString *string = [df stringFromDate:selectDate];
+    NSLog(@"========selectDateString:%@=======",selectDate);
+}
 
 #pragma mark-
 #pragma mark- Getters && Setters
 
 - (ZJDateAndTimePickerView *)dateAndTimePickerView {
     if (!_dateAndTimePickerView) {
-        _dateAndTimePickerView = [[ZJDateAndTimePickerView alloc] initWithTitle:@"请选择日期"];
+        _dateAndTimePickerView = [[ZJDateAndTimePickerView alloc] initWithMinimumDate:[[NSDate date] dateByAddingTimeInterval:-10*365*24*3600] maximumDate:[[NSDate date] dateByAddingTimeInterval:10*365*24*3600] selectDate:[NSDate date]];
         _dateAndTimePickerView.delegate = self;
     }
     return _dateAndTimePickerView;
 }
 
+- (ZJDatePickerView *)datePickerView {
+    if (!_datePickerView) {
+        _datePickerView = [[ZJDatePickerView alloc] initWithTitle:@"Select Your Date"];
+        _datePickerView.delegate = self;
+    }
+    return _datePickerView;
+}
 
 #pragma mark-
 #pragma mark- SetupConstraints
 
 - (void)setupSubviewsContraints{
-    [self.view addSubview:self.dateAndTimePickerView];
-    [_dateAndTimePickerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.datePickerView];
+    [_datePickerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
 }

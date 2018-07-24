@@ -1,11 +1,12 @@
 //
-//  ZJDateAndTimePickerView.m
+//  ZJDatePickerView.m
 //  ZJKit
 //
 //  Created by 张炯 on 2018/7/12.
 //
 
-#import "ZJDateAndTimePickerView.h"
+#import "ZJDatePickerView.h"
+
 #import "ZJPickerView.h"
 #import <Masonry/Masonry.h>
 #import <ZJKit/ZJKit.h>
@@ -13,7 +14,9 @@
 
 static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 
-@interface ZJDateAndTimePickerView ()<ZJPickerViewDataSource,ZJPickerViewDelegate,UIGestureRecognizerDelegate>
+static CGFloat kZJDatePickerViewContentHeight = 330.0f;
+
+@interface ZJDatePickerView ()<ZJPickerViewDataSource,ZJPickerViewDelegate,UIGestureRecognizerDelegate>
 
 {
     NSDate *_defaultMinDate;
@@ -23,14 +26,12 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     NSArray *_years;
     NSArray *_months;
     NSArray *_days;
-    NSArray *_hours;
-    NSArray *_minutes;
+    
     
     NSInteger _selectYear;
     NSInteger _selectMonth;
     NSInteger _selectDay;
-    NSInteger _selectHour;
-    NSInteger _selectMinute;
+    
 }
 
 @property (nonatomic, strong) ZJPickerView *pickerView;
@@ -50,12 +51,11 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 
 
 @property (nonatomic, strong) NSCalendar *calendar;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 
 @end
 
-@implementation ZJDateAndTimePickerView
+@implementation ZJDatePickerView
 
 #pragma mark-
 #pragma mark- View Life Cycle
@@ -67,6 +67,7 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
         [self setupData];
         [self checkDatesLegality];
         [self setupSubviewsContraints];
+        [self setComponentsScrollToCorrectIndex];
     }
     return self;
 }
@@ -80,13 +81,14 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
         [self setDatePickerMinDate:minDate maxDate:maxDate selectDate:selectDate];
         [self checkDatesLegality];
         [self setupSubviewsContraints];
+        [self setComponentsScrollToCorrectIndex];
     }
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _labelWidth = (self.frame.size.width-20-kZJDateAndTimePickerViewMargin*(5+1))/5;
+    _labelWidth = (self.frame.size.width-20-kZJDateAndTimePickerViewMargin*(3+1))/3;
     [self setupTitleLabels];
 }
 
@@ -143,18 +145,7 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
             [self regulateSelectDateIfBeyond:NSCalendarUnitDay];
         }
             break;
-        case 3:
-        {
-            _selectHour = [_hours[row] integerValue];
-            [self regulateSelectDateIfBeyond:NSCalendarUnitHour];
-        }
-            break;
-        case 4:
-        {
-            _selectMinute = [_minutes[row] integerValue];
-            [self regulateSelectDateIfBeyond:NSCalendarUnitMinute];
-        }
-            break;
+        
             
         default:
             break;
@@ -180,10 +171,10 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 - (void)sureButtonAction:(UIButton *)button {
     [self hide:YES completion:nil];
     
-    _selectDate = [self.calendar dateWithEra:_selectYear/100 year:_selectYear month:_selectMonth day:_selectDay hour:_selectHour minute:_selectMinute second:0 nanosecond:0];
+    _selectDate = [self.calendar dateWithEra:_selectYear/100 year:_selectYear month:_selectMonth day:_selectDay hour:0 minute:0 second:0 nanosecond:0];
     
-    if ([_delegate respondsToSelector:@selector(zj_dateAndTimePickerView:didSelectDate:)]) {
-        [_delegate zj_dateAndTimePickerView:self didSelectDate:_selectDate];
+    if ([_delegate respondsToSelector:@selector(zj_datePickerView:didSelectDate:)]) {
+        [_delegate zj_datePickerView:self didSelectDate:_selectDate];
     }
 }
 
@@ -197,12 +188,6 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     _minDate = _defaultMinDate = [ZJCalenderHandle dateOffset:-20 calendarUnit:NSCalendarUnitYear fromDate:[NSDate date]];
     _maxDate = _defaultMaxDate = [ZJCalenderHandle dateOffset:20 calendarUnit:NSCalendarUnitYear fromDate:[NSDate date]];
     _selectDate = _defaultSelectDate = [NSDate date];
-    
-    _years = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitYear fromDate:_minDate toDate:_maxDate];
-    _months = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitMonth fromDate:_minDate toDate:_maxDate];
-    _days = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitDay fromDate:_minDate toDate:_maxDate];
-    _hours = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitHour fromDate:_minDate toDate:_maxDate];
-    _minutes = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitMinute fromDate:_minDate toDate:_maxDate];
     
     [self setupCalenderUnitData];
     
@@ -218,38 +203,39 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
 
 
 - (void)setupCalenderUnitData {
+    
+    _years = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitYear fromDate:_minDate toDate:_maxDate];
+    _months = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitMonth fromDate:_minDate toDate:_maxDate];
+    _days = [ZJCalenderHandle dateArrayOfUnit:NSCalendarUnitDay fromDate:_minDate toDate:_maxDate];
+    
+    self.componentArray = [NSMutableArray arrayWithObjects:_years,_months,_days,nil];
+    
     self.selComponents = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:_selectDate];
     self.minComponents = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:_minDate];
     self.maxComponents = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:_maxDate];
     _selectYear = _selComponents.year;
     _selectMonth = _selComponents.month;
     _selectDay = _selComponents.day;
-    _selectHour = _selComponents.hour;
-    _selectMinute = _selComponents.minute;
-    
-    [self setComponentsScrollToCorrectIndex];
 }
 
 - (void)setComponentsScrollToCorrectIndex {
     NSDateComponents *minComponents = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:_minDate];
+    
     [self.pickerView selectRow:_selectYear-minComponents.year inComponent:0 animated:NO];
     [self.pickerView selectRow:_selectMonth-1 inComponent:1 animated:NO];
     [self.pickerView selectRow:_selectDay-1 inComponent:2 animated:NO];
-    [self.pickerView selectRow:_selectHour inComponent:3 animated:NO];
-    [self.pickerView selectRow:_selectMinute inComponent:4 animated:NO];
-    
 }
 
 - (void)regulateSelectDateIfBeyond:(NSCalendarUnit)changeUnit {
     switch (changeUnit) {
         case NSCalendarUnitYear:
         {
-            NSDate *tempDate = [self.calendar dateWithEra:_selectYear/100 year:_selectYear month:_selectMonth day:_selectDay hour:_selectHour minute:_selectMinute second:0 nanosecond:0];
+            NSDate *tempDate = [self.calendar dateWithEra:_selectYear/100 year:_selectYear month:_selectMonth day:_selectDay hour:0 minute:0 second:0 nanosecond:0];
             BOOL legality;
             NSDate *laterDate = [tempDate laterDate:self.minDate];
             NSDate *ealierDate = [tempDate earlierDate:self.maxDate];
             legality = [laterDate isEqualToDate:ealierDate];
-        
+            
             if (legality) {
                 return;
             }
@@ -257,12 +243,10 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
             if (_selectYear==self.minComponents.year||_selectYear==self.maxComponents.year) {
                 _selectMonth = (_selectYear==self.minComponents.year)?self.minComponents.month:self.maxComponents.month;
                 _selectDay = (_selectYear==self.minComponents.year)?self.minComponents.day:self.maxComponents.day;
-                _selectHour = (_selectYear==self.minComponents.year)?self.minComponents.hour:self.maxComponents.hour;
-                _selectMinute = (_selectYear==self.minComponents.year)?self.minComponents.minute:self.maxComponents.minute;
+                
                 [self.pickerView reloadComponent:1 withSelectRowAtIndex:_selectMonth-1];
                 [self.pickerView reloadComponent:2 withSelectRowAtIndex:_selectDay-1];
-                [self.pickerView reloadComponent:3 withSelectRowAtIndex:_selectHour];
-                [self.pickerView reloadComponent:4 withSelectRowAtIndex:_selectMinute];
+                
             }
             
         }
@@ -293,40 +277,11 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
             }
         }
             break;
-        case NSCalendarUnitHour:
-        {
-            if (_selectYear==self.minComponents.year&&_selectMonth==self.minComponents.month&&_selectDay==self.minComponents.day&&_selectHour<self.minComponents.hour) {
-                _selectHour = self.minComponents.hour;
-                [self.pickerView reloadComponent:3 withSelectRowAtIndex:_selectHour];
-            }
-            
-            if (_selectYear==self.maxComponents.year&&_selectMonth==self.maxComponents.month&&_selectDay==self.maxComponents.day&&_selectHour>self.maxComponents.hour) {
-                _selectHour = self.maxComponents.hour;
-                [self.pickerView reloadComponent:3 withSelectRowAtIndex:_selectHour];
-            }
-        }
-            break;
-        case NSCalendarUnitMinute:
-        {
-            if (_selectYear==self.minComponents.year&&_selectMonth==self.minComponents.month&&_selectDay==self.minComponents.day&&_selectHour==self.minComponents.hour&&_selectMinute<self.minComponents.minute) {
-                _selectMinute = self.minComponents.minute;
-                [self.pickerView reloadComponent:4 withSelectRowAtIndex:_selectMinute];
-            }
-            
-            if (_selectYear==self.maxComponents.year&&_selectMonth==self.maxComponents.month&&_selectDay==self.maxComponents.day&&_selectHour==self.maxComponents.hour&&_selectMinute>self.maxComponents.minute) {
-                _selectMinute = self.maxComponents.minute;
-                [self.pickerView reloadComponent:4 withSelectRowAtIndex:_selectMinute];
-            }
-        }
+        
             break;
         default:
             break;
     }
-}
-
-
-- (void)reloadComponent:(NSInteger)component {
-    [self.pickerView reloadComponent:component withSelectRowAtIndex:0];
 }
 
 #pragma mark-
@@ -336,11 +291,11 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     if (animated) {
         [UIView animateWithDuration:0.25 animations:^{
             self.alpha = 1.0;
-            self.contentView.transform = CGAffineTransformTranslate(self.contentView.transform, 0, -330.0);
+            self.contentView.transform = CGAffineTransformTranslate(self.contentView.transform, 0, -kZJDatePickerViewContentHeight);
         }];
     } else {
         self.alpha = 1.0;
-        self.contentView.transform = CGAffineTransformTranslate(self.contentView.transform, 0, -330.0);
+        self.contentView.transform = CGAffineTransformTranslate(self.contentView.transform, 0, -kZJDatePickerViewContentHeight);
     }
     
     
@@ -365,6 +320,7 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     self.selectDate = selectDate?:_defaultSelectDate;
     [self checkDatesLegality];
     [self setupCalenderUnitData];
+    [self setComponentsScrollToCorrectIndex];
 }
 
 
@@ -436,12 +392,11 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     return _calendar;
 }
 
+
 #pragma mark-
 #pragma mark- SetupConstraints
 
 - (void)setupSubviewsContraints{
-    
-    self.componentArray = [NSMutableArray arrayWithObjects:_years,_months,_days,_hours,_minutes,nil];
     
     UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapAction:)];
     backgroundTap.delegate = self;
@@ -457,7 +412,7 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self);
         make.top.mas_equalTo(self.mas_bottom);
-        make.height.mas_equalTo(330.0);
+        make.height.mas_equalTo(kZJDatePickerViewContentHeight);
     }];
     [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.contentView).mas_offset(-35.0);
@@ -492,13 +447,13 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
         }
     }
     
-    NSArray *dateArray = @[@"年",@"月",@"日",@"时",@"分"];
+    NSArray *dateArray = @[@"年",@"月",@"日"];
     for (int i=0; i<dateArray.count; i++) {
         UILabel *label = [[UILabel alloc] init];
         label.textColor = [ZJColor zj_colorC7];
         label.font = [ZJFont zj_font30px:ZJFontTypeRegular];
         label.textAlignment = NSTextAlignmentCenter;
-
+        
         label.text = dateArray[i];
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -509,5 +464,7 @@ static CGFloat kZJDateAndTimePickerViewMargin = 5.0f;
         }];
     }
 }
+
+
 
 @end

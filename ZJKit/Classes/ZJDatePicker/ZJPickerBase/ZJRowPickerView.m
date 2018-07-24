@@ -247,7 +247,7 @@ UIScrollViewDelegate>
         _topTableView.bounces = NO;
         _topTableView.estimatedRowHeight = 0;
         [_topTableView registerClass:[ZJRowPickerTableViewCell class] forCellReuseIdentifier:kZJTopTableViewCellIdentifier];
-        _topTableView.backgroundColor = [UIColor greenColor];
+        _topTableView.backgroundColor = [UIColor whiteColor];
     }
     return _topTableView;
 }
@@ -268,7 +268,7 @@ UIScrollViewDelegate>
         _bottomTableView.bounces = NO;
         _bottomTableView.estimatedRowHeight = 0;
         [_bottomTableView registerClass:[ZJRowPickerTableViewCell class] forCellReuseIdentifier:kZJBottomTableViewCellIdentifier];
-        _bottomTableView.backgroundColor = [UIColor yellowColor];
+        _bottomTableView.backgroundColor = [UIColor whiteColor];
     }
     return _bottomTableView;
     
